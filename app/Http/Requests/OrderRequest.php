@@ -24,11 +24,11 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'ID_order' => 'required',
-            'Tanggal_order' => 'required',
-            'Status_Order' => 'required',
-            'barang_id' => 'required|array',
-            'Jumlah_Order' => 'required|array',
+            'kode_order' => 'required',
+            'tanggal_order' => 'required|date',
+            'status_order' => 'required',
+            // 'barang_id' => 'required|array',
+            // 'jumlah_order' => 'required|array',
         ];
     }
 
@@ -40,11 +40,12 @@ class OrderRequest extends FormRequest
     public function messages()
     {
         return [
-            'ID_order.required' => 'ID Order harus diisi',
-            'Tanggal_order.required' => 'Tanggal Order harus diisi',
-            'Status_Order.required' => 'Status Order harus diisi',
+            'kode_order.required' => 'Kode Order harus diisi',
+            'kode_order.unique' => 'Kode Order sudah ada',
+            'tanggal_order.required' => 'Tanggal Order harus diisi',
+            'status_order.required' => 'Status Order harus diisi',
             'barang_id.required' => 'Barang harus diisi',
-            'Jumlah_Order.required' => 'Jumlah Order harus diisi',
+            'jumlah_order.required' => 'Jumlah Order harus diisi',
         ];
     }
 }

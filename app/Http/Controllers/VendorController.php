@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Barang;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 
 class VendorController extends Controller
 {
@@ -15,19 +13,19 @@ class VendorController extends Controller
     public function index(Request $request)
     {
         $searchValue = $request->input('search');
-    
+
         $vendor = Vendor::query()
             ->when($searchValue, function ($query, $searchValue) {
                 return $query->where('nama_vendor', 'like', '%' . $searchValue . '%')
-                             ->orWhere('kode_vendor', 'like', '%' . $searchValue . '%');
+                    ->orWhere('kode_vendor', 'like', '%' . $searchValue . '%');
             })
-            // ->orderByDesc('reorder_point') // Order by reorder point first
+        // ->orderByDesc('reorder_point') // Order by reorder point first
             ->orderByDesc('created_at') // Then order by created_at as a tiebreaker
             ->paginate(10);
-    
+
         return view('vendor.vendor_index', compact('vendor', 'searchValue'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -35,7 +33,6 @@ class VendorController extends Controller
     {
         return view('vendor.vendor_create');
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -48,19 +45,22 @@ class VendorController extends Controller
             'alamat' => 'required',
             'kontak' => 'required',
         ]);
-    
-        // Mencari vendor berdasarkan ID
-        $vendor = new \App\Models\vendor(); // Mendapatkan vendor dengan ID yang sesuai
-    
+
+        // Membuat instance Vendor baru
+        $vendor = new Vendor(); // Membuat instance Vendor baru
+
         // Mengisi data pada model vendor dengan data yang sudah tervalidasi
-        $vendor->fill($requestData); 
-    
+        $vendor->fill($requestData);
+
+        // Menyimpan data vendor ke database
+        $vendor->save();
+
         // Menampilkan flash message sukses
-        flash('Data sudah berhasil diubah!')->success();
-    
+        flash('Data sudah berhasil ditambah!')->success();
+
         // Mengarahkan user kembali ke halaman daftar vendor
         return redirect('/vendor');
-            //mengarahkan user ke url sebelumnya yaitu /pasien/create dengan membawa variabel pesan
+        //mengarahkan user ke url sebelumnya yaitu /pasien/create dengan membawa variabel pesan
 
     }
 
@@ -78,7 +78,7 @@ class VendorController extends Controller
     public function edit(string $id)
     {
         $vendor = Vendor::findOrFail($id);
-            
+
         return view('vendor.vendor_edit', compact('vendor'));
     }
 
@@ -88,25 +88,25 @@ class VendorController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
-            'kode_vendor' => 'required|unique:vendors,kode_vendor,'. $id,
+            'kode_vendor' => 'required|unique:vendors,kode_vendor,' . $id,
             'nama_vendor' => 'required',
             'alamat' => 'required',
             'kontak' => 'required',
         ]);
-    
+
         // Mencari vendor berdasarkan ID
-        $vendor = \App\Models\Vendor::findOrFail($id); // Mendapatkan vendor dengan ID yang sesuai
-    
+        $vendor = Vendor::findOrFail($id); // Mendapatkan vendor dengan ID yang sesuai
+
         // Mengisi data pada model vendor dengan data yang sudah tervalidasi
-        $vendor->fill($requestData); 
+        $vendor->fill($requestData);
         $vendor->save();
-    
+
         // Menampilkan flash message sukses
         flash('Data sudah berhasil diubah!')->success();
-    
+
         // Mengarahkan user kembali ke halaman daftar vendor
         return redirect('/vendor');
-            //mengarahkan user ke url sebelumnya yaitu /pasien/create dengan membawa variabel pesan
+        //mengarahkan user ke url sebelumnya yaitu /pasien/create dengan membawa variabel pesan
 
     }
 
@@ -115,7 +115,7 @@ class VendorController extends Controller
      */
     public function destroy(string $id)
     {
-        $vendor = \App\Models\Vendor::findOrFail($id);
+        $vendor = Vendor::findOrFail($id);
         $vendor->delete();
         flash('Data sudah dihapus')->success();
         return back();

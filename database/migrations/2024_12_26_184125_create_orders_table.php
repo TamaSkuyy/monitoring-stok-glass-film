@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_order', 50)->unique();
             $table->date('tanggal_order');
             $table->foreignId('vendor_id')->constrained('barangs', 'vendor_id')->onDelete('cascade');
             $table->integer('total');
