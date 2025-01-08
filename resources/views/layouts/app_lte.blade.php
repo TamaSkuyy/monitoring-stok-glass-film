@@ -124,14 +124,7 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/order" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order Film</p>
-                </a>
-              </li>
-            </ul>
+
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -143,17 +136,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/hitting" class="nav-link">
+                <a href="/order" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Masuk</p>
+                  <p>Order Glass FIlm</p>
                 </a>
               </li>
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/transaksi" class="nav-link">
+                <a href="/cutting" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Keluar</p>
+                  <p>Cutting</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/hitting" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hitting</p>
                 </a>
               </li>
             </ul>
@@ -170,13 +171,19 @@
               <li class="nav-item">
                 <a href="../tables/data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Masuk</p>
+                  <p>Order Glass Film</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../tables/data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Keluar</p>
+                  <p>Cutting</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../tables/data.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hitting</p>
                 </a>
               </li>
             </ul>

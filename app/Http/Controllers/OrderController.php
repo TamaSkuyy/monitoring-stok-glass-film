@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use App\Models\Barang;
