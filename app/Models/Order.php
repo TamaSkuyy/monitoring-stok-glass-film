@@ -4,15 +4,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tanggal_order', 'vendor_id', 'total', 'status_order', 'user_id'];
+    protected $fillable = ['kode_order', 'tanggal_order', 'vendor_id', 'total', 'status_order', 'user_id'];
 
     public function barang(): BelongsToMany
     {
@@ -20,5 +20,3 @@ class Order extends Model
             ->withPivot('Jumlah_Order');
     }
 }
-
-
